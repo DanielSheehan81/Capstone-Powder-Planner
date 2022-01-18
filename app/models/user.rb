@@ -8,4 +8,5 @@ class User < ApplicationRecord
               within: 6..40,
             },
             on: :create
+    validates :username, presence: true, length: {within: 2..15}
 end
