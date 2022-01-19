@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    skip_before_action :authenticate_user, only: %i[create me]
+    # skip_before_action :authenticate_user, only: %i[create me]
 
     def index
         render json: User.all
@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 
     def user_params
         params.permit(:full_name, :email, :username, :password)
+    end
 
 
 end
