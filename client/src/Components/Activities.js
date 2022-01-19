@@ -1,9 +1,21 @@
 import React from 'react'
+import Form from 'react-bootstrap/Form'
 
-const Activities = () => {
+function Activities({ user_id, resort_id, description, checked, date }) {
     return (
-        <div>
-            
+        <div className='activityForm'>
+            <h1>{date}</h1>
+            <Form>
+                {['checkbox'].map((type) => (
+                    <div key={`default-${type}`} className="mb-3">
+                        <Form.Check
+                            type={type}
+                            id={`default-${type}`}
+                            label={`${description}`}
+                        />
+                    </div>
+                ))}
+            </Form>
         </div>
     )
 }

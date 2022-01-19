@@ -9,7 +9,7 @@ export default function SnowboardMan() {
         autoplay
         loop
         src="https://assets7.lottiefiles.com/packages/lf20_vykpwt8b.json"
-        style={{ height: '600px', width: '600px' }}
+        style={{ height: '300px', width: '300px' }}
         speed = {.7}
       >
       </Player>

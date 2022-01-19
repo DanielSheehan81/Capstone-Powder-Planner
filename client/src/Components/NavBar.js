@@ -13,14 +13,22 @@ export const NavBar = ({ currentUser, setCurrentUser }) => {
 
     return (
         <div className="navbar">
-            <Link to="/">
-                <FaSnowboarding size='110' color='black' />
-            </Link>
+            <nav>
 
+            <div className='snowIcon'> 
+
+            <Link to="/">
+                <FaSnowboarding size='76' color='black' />
+            </Link>
+            </div>
+            <div className='loginIcon'>
             {currentUser ?
-                (<Link to='/'> <RiLogoutBoxFill size='120' color='black' onClick={handleLogout} /> </Link>) :
-                (<Link to='/login'> <RiLoginBoxFill size='120' color='black' /> </Link>)
+                (<Link to='/'> <RiLogoutBoxFill size='76' color='black' onClick={handleLogout} /> </Link>) :
+                (<Link to='/login'> <RiLoginBoxFill size='76' color='black' /> </Link>)
             }
+
+            </div>
+            </nav>
         </div>
     )
 }
