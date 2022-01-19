@@ -3,54 +3,67 @@ import Header from './Header'
 import SnowboardMan from './SnowboardMan'
 import Activities from './Activities'
 import MapContainer from './MapContainer'
+import ActivityModalForm from './ActivityModalForm'
 
 export default function Home({ currentUser, setCurrentUser }) {
+    const [buttonPopup, setButtonPopup] = useState(false);
+
+    function handleActivityClick() {
+        setButtonPopup(true);
+    }
     const [activities, setActivities] = useState([])
 
     useEffect(() => {
-        fetch('/activities').then(r => r.json()).then(data => {
-            setActivities(data)
+        fetch(`/users/${currentUser.id}`).then(r => r.json()).then(data => {
+            setActivities(data.activities)
         })
-    }, [])
+    }, [activities])
 
-    let activityDate 
+    let activityDate
 
-        const renderActivities = activities.map(activity => {
-            activityDate = activity.date
-            console.log(activity)
-            return (
-                <Activities user_id={activity.user_id} resort_id={activity.resort_id} description={activity.description} checked={activity.checked} />
-        )
-        })
-
-
-
-
-
-
-
-
-
-
-
+    const renderActivities = activities.map(activity => {
+        activityDate = activity.date
+        
+        console.log(activity)
         return (
-            <>
-                <Header currentUser={currentUser} setCurrentUser={setCurrentUser} />
-                <div className='homePage'>
-                    <SnowboardMan />
-                    <MapContainer />
-                    <br/>
-                    <div className='activityData'>
+            <div>
+                <Activities user_id={activity.user_id} resort_id={activity.resort_id} description={activity.description} checked={activity.checked} handleActivityClick={handleActivityClick} buttonPopup={buttonPopup}/>
+                
+            </div>
+        )
+    })
+
+
+
+
+
+
+
+
+
+
+
+    return (
+        <>
+            <Header currentUser={currentUser} setCurrentUser={setCurrentUser} />
+            <div className='homePage'>
+                <SnowboardMan />
+                <MapContainer />
+                <br />
+                <div className='activityData'>
                     <p>Welcome to Powder Planner!</p>
                     <h1>{activityDate}</h1>
                     {renderActivities}
+                    <button onClick = {handleActivityClick}>Add New Activity</button>
 
-                    </div>
-                    <footer></footer>
                 </div>
+                <ActivityModalForm  trigger={buttonPopup}
+           user={currentUser.id} handleActivityClick={handleActivityClick} />
+                <footer></footer>
+            </div>
 
-            </>
-        )
-    }
+        </>
+    )
+}
 
 

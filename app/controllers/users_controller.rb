@@ -18,6 +18,10 @@ class UsersController < ApplicationController
           render json: 'Not authenticated', status: :unauthorized
         end
       end
+
+    def show
+        render json: User.find(params[:id])
+    end
     
 
     private

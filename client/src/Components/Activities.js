@@ -1,7 +1,12 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
+import ActivityModalForm from './ActivityModalForm';
 
-function Activities({ user_id, resort_id, description, checked, date }) {
+function Activities({ user_id, resort_id, description, checked, date, handleActivityClick, buttonPopup }){
+
+
+
+
     return (
         <div className='activityForm'>
             <h1>{date}</h1>
@@ -16,6 +21,7 @@ function Activities({ user_id, resort_id, description, checked, date }) {
                     </div>
                 ))}
             </Form>
+            
         </div>
     )
 }
