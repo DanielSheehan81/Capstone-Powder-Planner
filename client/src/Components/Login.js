@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { Link, useNavigate } from "react-router-dom"
+import SnowboardMan from './SnowboardMan';
 
 function Login({ setCurrentUser }) {
     const navigate = useNavigate()
@@ -15,7 +16,7 @@ function Login({ setCurrentUser }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("submitted")
-        fetch("api/login", {
+        fetch("/login", {
             method: "POST",
             headers: { 'Content-Type': "application/json", },
             body: JSON.stringify(loginForm)
@@ -33,6 +34,11 @@ function Login({ setCurrentUser }) {
         })
     }
     return (
+        <>
+        <div>
+            <SnowboardMan />
+
+        </div>
         <div className="login">
             <form onSubmit={handleSubmit}>
                 <h1>Welcome Back</h1>
@@ -65,6 +71,7 @@ function Login({ setCurrentUser }) {
                 </p>
             </form>
         </div>
+        </>
     )
 }
 

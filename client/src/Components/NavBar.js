@@ -1,5 +1,8 @@
 import React from 'react'
 import { Link } from "react-router-dom"
+import {FaSnowboarding} from "react-icons/fa"
+import {RiLogoutBoxFill} from "react-icons/ri"
+import {RiLoginBoxFill} from "react-icons/ri"
 
 export const NavBar = ({ currentUser, setCurrentUser }) => {
     const handleLogout = () => {
