@@ -55,7 +55,7 @@ display: flex;
 
 .map{
   height: 264px;
-  width: 631px;
+  width: 100%;
   left: -121px;
   top: -281px;
   border-radius: 0px;
@@ -69,7 +69,7 @@ display: flex;
   flex-direction: column;
   align-items: center;
   padding: 25px;
-  
+  margin: 20px;
   position: static;
   left: 0%;
   right: -1%;
@@ -91,6 +91,49 @@ display: flex;
   height: 600px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
+
+.resortData{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+  margin: 20px;
+  position: static;
+  left: 0%;
+  right: -1%;
+  top: 0%;
+  bottom: -0.84%;
+  
+  background: #BCD0CF;
+  border: 1px solid #313178;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 15px rgba(180, 180, 180, 0.05);
+  border-radius: 12px;
+  
+  /* Inside auto layout */
+  
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 0px;
+  height: 600px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.resortInfo{
+  text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dataCards {
+  display: flex;
+    justify-content: space-around;
+    margin-top: 100px;
+    width: 80%;
+    flex-wrap: wrap;
+}
+
 
 .activityForm{
   display: flex;

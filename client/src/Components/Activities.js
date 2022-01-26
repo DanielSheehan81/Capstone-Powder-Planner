@@ -2,28 +2,38 @@ import React, {useState} from 'react'
 import Form from 'react-bootstrap/Form'
 
 
-function Activities({ activity_id, user_id, resort_id, description, checked, date, handleActivityClick }){
+function Activities({ stuff, setActivities, activity_id, user_id, resort_id, description, checked, date, handleActivityClick }){
     console.log(description)
-    const [complete, setComplete] = useState({checked:true})
+    console.log(stuff)
+    // const [complete, setComplete] = useState({checked:true})
+
+    
 
     const handleCompleted = (e) => {
         // console.log(e)
         // e.preventDefault();
-        complete.checked ? setComplete({checked:false}) : setComplete({checked:true})
+        // complete.checked ? setComplete({checked:false}) : setComplete({checked:true})
         // console.log(checked)
-        console.log(complete)
+        // console.log(complete)
         fetch(`/activities/${e}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({...complete}),
+            body: JSON.stringify({checked:!checked}),
         })
-            // .then((r) => r.json())
-            // .then((data) => {
-            //     console.log(data)
-            //     // setActivities([...activities, data])
-            // });
+            .then((r) => r.json())
+            // .then(data => console.log(data.checked))
+            .then((data) => {
+                const tempStuff = stuff.map(s => {
+                    if (s.id === data.id) {
+                        return data
+                    } else {
+                        return s
+                    }
+                })
+                setActivities(tempStuff)
+            });
     }
 
 

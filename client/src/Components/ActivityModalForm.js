@@ -29,8 +29,8 @@ function ActivityModalForm(props) {
             <option value={r.id}>{r.name}</option>
         )
     })
-
-
+    
+    
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -70,7 +70,9 @@ function ActivityModalForm(props) {
                     <Form.Label>Resort:</Form.Label>
                     <Form.Select  name="resort_id"
                         onChange={(e) => handleChange(e)}
+                        // defaultValue={props.resort[0].id}
                         >
+                            <option value = {1}>Choose Given Resort</option>
                             {resortSelect}
 
                         </Form.Select>

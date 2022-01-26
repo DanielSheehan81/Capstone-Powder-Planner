@@ -12,12 +12,12 @@ export default function Home({ currentUser, setCurrentUser }) {
     // const [activityDate, setActivityDate] = useState("Default")
     const [buttonPopup, setButtonPopup] = useState(false);
     const [resort, setResort] = useState([])
-    
+
     function handleActivityClick() {
         setButtonPopup(true);
     }
     const [activities, setActivities] = useState([])
-    
+
     useEffect(() => {
         fetch(`/users/${currentUser.id}`).then(r => r.json()).then(data => {
             setActivities(data.activities)
@@ -33,30 +33,35 @@ export default function Home({ currentUser, setCurrentUser }) {
         // activityDate = activity.date
         // console.log(activity)
 
-        
+
         return (
             <div>
-                <Activities activity_id = {activity.id} user_id={activity.user_id} resort_id={activity.resort_id} date={activity.date} description={activity.description} checked={activity.checked} handleActivityClick={handleActivityClick} />
+                <Activities activity_id={activity.id} user_id={activity.user_id} resort_id={activity.resort_id} date={activity.date} description={activity.description} checked={activity.checked} handleActivityClick={handleActivityClick} setActivities={setActivities} stuff={activities} />
 
             </div>
         )
-        })
+    })
 
-        useEffect(() => {
-            fetch("/resorts").then(r => r.json()).then(data => {
-                setResort(data)
-                console.log(data)
-                // setResort(data.resorts[0].id)
-            })
-        }, [])
-
-        console.log(resort)
-        const renderResorts = resort.map(r => {
-            console.log(r)
-            return (
-                <h1>{r.name}</h1>
-            )
+    useEffect(() => {
+        fetch("/resorts").then(r => r.json()).then(data => {
+            setResort(data)
+            console.log(data)
+            // setResort(data.resorts[0].id)
         })
+    }, [])
+
+    console.log(resort)
+    const renderResorts = resort.map(r => {
+        console.log(r)
+        return (
+            <div className='resortInfo'>
+                <h2>{r.name}</h2>
+                <p>Address: {r.address}</p>
+                <p>Rating: {r.rating}</p>
+            </div>
+
+        )
+    })
 
 
 
@@ -65,21 +70,27 @@ export default function Home({ currentUser, setCurrentUser }) {
     return (
         <>
             <Header currentUser={currentUser} setCurrentUser={setCurrentUser} />
-            
+
             <div className='homePage'>
                 {/* <SnowboardMan /> */}
-                    {renderResorts}
                 <MapContainer />
                 <br />
-                <Resort setResort={setResort} resort={resort}/>
+                <div className='dataCards'>
+
+                <div className='resortData'>
+                    {renderResorts}
+                    <Resort setResort={setResort} resort={resort} />
+                    
+                </div>
                 <div className='activityData'>
-                    <p>Welcome to Powder Planner!</p>
+                    <h1>Activities:</h1>
                     {/* <h1>{activityDate}</h1> */}
                     {renderActivities}
                     {/* <button onClick={handleActivityClick}>Add New Activity</button> */}
 
-                <ActivityModalForm  resort={resort}
-           user={currentUser.id}  handleActivityClick={handleActivityClick} activities= {activities} setActivities= {setActivities} />
+                    <ActivityModalForm resort={resort}
+                        user={currentUser.id} handleActivityClick={handleActivityClick} activities={activities} setActivities={setActivities} />
+                </div>
                 </div>
                 <footer></footer>
             </div>

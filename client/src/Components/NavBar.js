@@ -21,6 +21,10 @@ export const NavBar = ({ currentUser, setCurrentUser }) => {
                 <FaSnowboarding size='76' color='black' />
             </Link>
             </div>
+            <div className='navTitle'>
+            <h1>Welcome to Powder Planner!</h1>
+
+            </div>
             <div className='loginIcon'>
             {currentUser ?
                 (<Link to='/'> <RiLogoutBoxFill size='76' color='black' onClick={handleLogout} /> </Link>) :

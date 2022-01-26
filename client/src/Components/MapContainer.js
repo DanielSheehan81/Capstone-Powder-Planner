@@ -28,7 +28,7 @@ const MapContainer = () => {
     }, []);
 
     const mapStyles = {
-        height: "300px",
+        height: "400px",
         width: "100%"
     };
 
