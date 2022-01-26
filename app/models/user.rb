@@ -12,7 +12,7 @@ class User < ApplicationRecord
     validates :username, presence: true, length: {within: 2..15}
 
 
-    def completed_activities
-      all_completed = self.tasks.where(checked: true)
-    end
+    # def completed_activities
+    #   all_completed = self.tasks.where(checked: true)
+    # end
 end

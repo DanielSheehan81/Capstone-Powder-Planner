@@ -1,7 +1,7 @@
 class ResortsController < ApplicationController
 
     def create
-        resort = resort.create!(resort_params)
+        resort = Resort.create!(resort_params)
         render json: resort
     end
 

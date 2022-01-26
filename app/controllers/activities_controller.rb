@@ -9,7 +9,7 @@ class ActivitiesController < ApplicationController
 
     def create
         @new_activity = Activity.create!(activity_params)
-        @data = @new_activity.user.completed_activities
+        # @data = @new_activity.user.completed_activities
         render json: @new_activity, status: :created
 
     end

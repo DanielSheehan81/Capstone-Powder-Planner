@@ -30,13 +30,23 @@ sample = User.create(
     puts "Seeding Resorts..."
     
     snowshoe = Resort.create(
-            {
-                name:"Snowshoe Mountain Resort",
-                address:"10 Snowshoe Dr, Snowshoe, WV 26209",
-                rating: 10
-            }
+        {
+            name:"Snowshoe Mountain Resort",
+            address:"10 Snowshoe Dr, Snowshoe, WV 26209",
+            rating: 10
+        }
         
         )
+    
+    example = Resort.create(
+            {
+                name:"Test",
+                address:"10 Test Dr",
+                rating: 5
+            }
+            
+         )
+    
         
     puts "Seeding Activities..."
 
