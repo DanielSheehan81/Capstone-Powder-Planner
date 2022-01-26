@@ -21,7 +21,7 @@ export default function Home({ currentUser, setCurrentUser }) {
     useEffect(() => {
         fetch(`/users/${currentUser.id}`).then(r => r.json()).then(data => {
             setActivities(data.activities)
-            console.log(data)
+            // console.log(data)
             // setResort(data.resorts[0].id)
         })
     }, [])
@@ -31,21 +31,30 @@ export default function Home({ currentUser, setCurrentUser }) {
     const renderActivities = activities.map(activity => {
         // activity.date && (setActivityDate(activity.date))
         // activityDate = activity.date
-        console.log(activity)
+        // console.log(activity)
 
         
         return (
             <div>
-                <Activities user_id={activity.user_id} resort_id={activity.resort_id} date={activity.date} description={activity.description} checked={activity.checked} handleActivityClick={handleActivityClick} buttonPopup={buttonPopup} />
+                <Activities activity_id = {activity.id} user_id={activity.user_id} resort_id={activity.resort_id} date={activity.date} description={activity.description} checked={activity.checked} handleActivityClick={handleActivityClick} />
 
             </div>
         )
         })
 
-        const renderResorts = resort.map(resort => {
-            console.log(resort)
+        useEffect(() => {
+            fetch("/resorts").then(r => r.json()).then(data => {
+                setResort(data)
+                console.log(data)
+                // setResort(data.resorts[0].id)
+            })
+        }, [])
+
+        console.log(resort)
+        const renderResorts = resort.map(r => {
+            console.log(r)
             return (
-                <h1>{resort.name}</h1>
+                <h1>{r.name}</h1>
             )
         })
 
@@ -59,17 +68,17 @@ export default function Home({ currentUser, setCurrentUser }) {
             
             <div className='homePage'>
                 {/* <SnowboardMan /> */}
+                    {renderResorts}
                 <MapContainer />
                 <br />
                 <Resort setResort={setResort} resort={resort}/>
                 <div className='activityData'>
                     <p>Welcome to Powder Planner!</p>
                     {/* <h1>{activityDate}</h1> */}
-                    {renderResorts}
                     {renderActivities}
                     {/* <button onClick={handleActivityClick}>Add New Activity</button> */}
 
-                <ActivityModalForm  trigger={buttonPopup}
+                <ActivityModalForm  resort={resort}
            user={currentUser.id}  handleActivityClick={handleActivityClick} activities= {activities} setActivities= {setActivities} />
                 </div>
                 <footer></footer>

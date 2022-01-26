@@ -21,6 +21,12 @@ class ActivitiesController < ApplicationController
         head :no_content
     end
 
+    def completed
+       completed_activity = Activity.find(params[:id])
+       completed_activity.update!(activity_params) 
+       render json: completed_activity
+    end
+
     private
 
     def activity_params

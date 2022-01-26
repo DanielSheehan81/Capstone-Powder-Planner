@@ -19,11 +19,16 @@ function ActivityModalForm(props) {
         user_id: props.user,
         resort_id: 0
     })
-    console.log(props.activities)
+    // console.log(props.activities)
 
     function handleChange(e) {
         setNewActivityForm({ ...newActivityForm, [e.target.name]: e.target.value })
     }
+    const resortSelect = props.resort.map(r => {
+        return (
+            <option value={r.id}>{r.name}</option>
+        )
+    })
 
 
 
@@ -40,7 +45,7 @@ function ActivityModalForm(props) {
             .then((r) => r.json())
             .then((data) => {
                 console.log(data)
-                props.setActivities([data, ...props.activities])
+                props.setActivities([...props.activities, data])
                 setShow(false)
             });
     }
@@ -63,10 +68,12 @@ function ActivityModalForm(props) {
                 {/* <Modal.Body></Modal.Body> */}
                 <Form.Group >
                     <Form.Label>Resort:</Form.Label>
-                    <Form.Control type="number" name="resort_id"
+                    <Form.Select  name="resort_id"
                         onChange={(e) => handleChange(e)}
-                        placeholder="Enter a resort."
-                        value={newActivityForm.resort_id} />
+                        >
+                            {resortSelect}
+
+                        </Form.Select>
                     <Form.Label>Description: </Form.Label>
                     <Form.Control type="text" name="description"
                         onChange={(e) => handleChange(e)}
