@@ -50,14 +50,16 @@ export default function Home({ currentUser, setCurrentUser }) {
         })
     }, [])
 
+    let filterResorts = currentUser.resorts.filter((r, ind) => ind === currentUser.resorts.findIndex(elem => elem.name === r.name))
+
     console.log(resort)
-    const renderResorts = resort.map(r => {
+    const renderResorts = filterResorts?.map(r => {
         console.log(r)
         return (
             <div className='resortInfo'>
-                <h2>{r.name}</h2>
-                <p>Address: {r.address}</p>
-                <p>Rating: {r.rating}</p>
+                <h3>{r.name}</h3>
+                <p><strong>Address:</strong> {r.address}</p>
+                <p><strong>Rating:</strong> {r.rating}</p>
             </div>
 
         )
@@ -78,6 +80,7 @@ export default function Home({ currentUser, setCurrentUser }) {
                 <div className='dataCards'>
 
                 <div className='resortData'>
+                    <h1>Resorts:</h1>
                     {renderResorts}
                     <Resort setResort={setResort} resort={resort} />
                     

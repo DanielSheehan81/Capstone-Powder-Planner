@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-
+import {useNavigate} from 'react-router-dom'
 
 function ActivityModalForm(props) {
     // const [description, setDescription] = useState("")
     // const [checked, setChecked] = useState(false)
     // const [date, setDate] = useState("")
+    const navigate = useNavigate()
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -47,6 +48,7 @@ function ActivityModalForm(props) {
                 console.log(data)
                 props.setActivities([...props.activities, data])
                 setShow(false)
+                window.location.reload(true)
             });
     }
 

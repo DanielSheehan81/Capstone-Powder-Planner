@@ -50,7 +50,12 @@ function App() {
           setCurrentUser={setCurrentUser}
           currentUser={currentUser}
         />} />
+      {currentUser ? (
+        ""
+      ) : (
+
       <Route path="/signup" element={<Signup setCurrentUser={setCurrentUser} />} />
+      )}
       {/* <Route path="/" element={<Home currentUser={currentUser} />} /> */}
 
 

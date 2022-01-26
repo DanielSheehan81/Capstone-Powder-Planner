@@ -1,21 +1,33 @@
 import React, { useState } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
-import usePlacesAutocomplete, {
-    getGeocode,
-    getLatLng,
-  } from "use-places-autocomplete";
-  import {
-    Combobox,
-    ComboboxInput,
-    ComboboxPopover,
-    ComboboxList,
-    ComboboxOption,
-  } from "@reach/combobox";
+import Search from './Search';
+// import usePlacesAutocomplete, {
+//     getGeocode,
+//     getLatLng,
+// } from "use-places-autocomplete";
+// import {
+//     Combobox,
+//     ComboboxInput,
+//     ComboboxPopover,
+//     ComboboxList,
+//     ComboboxOption,
+// } from "@reach/combobox";
+// import "@reach/combobox/styles.css";
 
 const MapContainer = () => {
     const [selected, setSelected] = useState(null);
     const [markers, setMarkers] = useState([]);
+    const mapRef = React.useRef();
+    const onMapLoad = React.useCallback((map) => {
+        mapRef.current = map;
+    }, []);
 
+    const panTo = React.useCallback(({ lat, lng }) => {
+        mapRef.current.panTo({ lat, lng });
+        mapRef.current.setZoom(15);
+      }, []);
+    
+    // const libraries = ["places"];
 
     const onMapClick = React.useCallback((e) => {
         setMarkers((current) => [
@@ -34,24 +46,26 @@ const MapContainer = () => {
 
 
 
-    const defaultCenter = {
+    let defaultCenter = {
         lat: 39.27709, lng: -95.11749
     }
 
-    
+
 
     return (
         <>
-            <LoadScript
-                googleMapsApiKey='AIzaSyDy4mA72vXAJS8UNIxKqIIM9XW9J4gBR98'>
+            
                 <div className='map'>
+                    <Search panTo= {panTo}/>
                     <GoogleMap
                         mapContainerStyle={mapStyles}
                         zoom={4}
-                        center={defaultCenter}
+                        center={ markers.length === 0 ? defaultCenter : markers[0]}
+
                         onClick={onMapClick}
+                        onLoad={onMapLoad}
                     >
-                        
+
                         {markers.map((marker) => (
                             <Marker
                                 key={`${marker.lat}-${marker.lng}`}
@@ -81,14 +95,14 @@ const MapContainer = () => {
                                         </span>{" "}
                                         Let's Go Here!
                                     </h2>
-                                    
+
                                 </div>
                             </InfoWindow>
                         ) : null}
 
                     </GoogleMap>
                 </div>
-            </LoadScript>
+            
         </>
     )
 }

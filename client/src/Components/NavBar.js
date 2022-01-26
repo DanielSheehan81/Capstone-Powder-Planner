@@ -22,7 +22,7 @@ export const NavBar = ({ currentUser, setCurrentUser }) => {
             </Link>
             </div>
             <div className='navTitle'>
-            <h1>Welcome to Powder Planner!</h1>
+            <h1><strong>Welcome to Powder Planner!</strong></h1>
 
             </div>
             <div className='loginIcon'>
