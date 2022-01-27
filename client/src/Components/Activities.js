@@ -15,7 +15,7 @@ function Activities({ stuff, setActivities, activity_id, user_id, resort_id, des
         // complete.checked ? setComplete({checked:false}) : setComplete({checked:true})
         // console.log(checked)
         // console.log(complete)
-        fetch(`/activities/${e}`, {
+        fetch(`api/activities/${e}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",

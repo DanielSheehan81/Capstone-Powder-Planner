@@ -36,7 +36,7 @@ function ActivityModalForm(props) {
     function handleSubmit(e) {
         e.preventDefault();
 
-        fetch("/activities", {
+        fetch("api/activities", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

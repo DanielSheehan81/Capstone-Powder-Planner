@@ -29,7 +29,7 @@ function Resort({setResort, resort}) {
         function handleSubmit(e) {
         e.preventDefault();
 
-        fetch("/newresort", {
+        fetch("api/newresort", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

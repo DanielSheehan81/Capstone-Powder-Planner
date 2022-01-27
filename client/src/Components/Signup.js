@@ -25,7 +25,7 @@ function Signup({ setCurrentUser }) {
             body: JSON.stringify(formData),
         };
 
-        fetch("/signup", configObj).then((resp) => {
+        fetch("api/signup", configObj).then((resp) => {
             if (resp.ok) {
                 resp.json().then((user) => {
                     console.log(user);
@@ -93,7 +93,8 @@ function Signup({ setCurrentUser }) {
                         onChange={(e) => handleChange(e)}
                         required />
                 </label>
-                <input type="submit"  className="btn btn-dark btn-lg btn-block" value="send" />
+                <br></br>
+                <button type="submit"  className="btn btn-dark btn-lg btn-block">Sign Up</button>
             </form>
         </div>
             </div>

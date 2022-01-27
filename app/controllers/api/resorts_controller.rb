@@ -1,4 +1,4 @@
-class ResortsController < ApplicationController
+class Api::ResortsController < ApplicationController
 
     def create
         resort = Resort.create!(resort_params)

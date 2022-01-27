@@ -10,7 +10,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null)
 
   useEffect(() => {
-    fetch("/me", {
+    fetch("api/me", {
       credentials: "include",
     }).then((res) => {
       if (res.ok) {

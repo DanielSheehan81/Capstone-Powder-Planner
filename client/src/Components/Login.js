@@ -16,7 +16,7 @@ function Login({ setCurrentUser }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("submitted")
-        fetch("/login", {
+        fetch("api/login", {
             method: "POST",
             headers: { 'Content-Type': "application/json", },
             body: JSON.stringify(loginForm)

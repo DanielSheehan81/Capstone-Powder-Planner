@@ -6,7 +6,7 @@ import {RiLoginBoxFill} from "react-icons/ri"
 
 export const NavBar = ({ currentUser, setCurrentUser }) => {
     const handleLogout = () => {
-        fetch("/logout", { method: "DELETE" });
+        fetch("api/logout", { method: "DELETE" });
         setCurrentUser(null)
     }
 

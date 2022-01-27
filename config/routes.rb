@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  
+  namespace :api do
+
+
   resources :activities, only: [:index, :show, :create, :destroy]
   resources :resorts, only: [:index, :show, :destroy]
   resources :users, only: %i[create index]
@@ -13,4 +15,5 @@ Rails.application.routes.draw do
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
+  end
 end

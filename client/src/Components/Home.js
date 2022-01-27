@@ -19,7 +19,7 @@ export default function Home({ currentUser, setCurrentUser }) {
     const [activities, setActivities] = useState([])
 
     useEffect(() => {
-        fetch(`/users/${currentUser.id}`).then(r => r.json()).then(data => {
+        fetch(`api/users/${currentUser.id}`).then(r => r.json()).then(data => {
             setActivities(data.activities)
             // console.log(data)
             // setResort(data.resorts[0].id)
@@ -43,7 +43,7 @@ export default function Home({ currentUser, setCurrentUser }) {
     })
 
     useEffect(() => {
-        fetch("/resorts").then(r => r.json()).then(data => {
+        fetch("api/resorts").then(r => r.json()).then(data => {
             setResort(data)
             console.log(data)
             // setResort(data.resorts[0].id)

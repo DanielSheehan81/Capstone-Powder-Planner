@@ -1,4 +1,4 @@
-class ActivitiesController < ApplicationController
+class Api::ActivitiesController < ApplicationController
    
    
     def index
