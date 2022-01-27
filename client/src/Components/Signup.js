@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 // import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Signup({ setCurrentUser }) {
     const [formData, setFormData] = useState({
@@ -8,6 +9,8 @@ function Signup({ setCurrentUser }) {
         username: "",
         password: ""
     });
+
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -36,7 +39,7 @@ function Signup({ setCurrentUser }) {
                         username: "",
                         password: ""
                     })
-                    window.location.reload(false)
+                    navigate("/")
                 });
             } else {
                 resp.json().then((errors) => {

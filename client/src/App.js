@@ -38,7 +38,7 @@ function App() {
 
     {currentUser ? (
         <div>
-          <Home currentUser={currentUser} setCurrentUser={setCurrentUser}/>
+          {/* <Home currentUser={currentUser} setCurrentUser={setCurrentUser}/> */}
         </div>
       ) : (
         <div className="login-page">
@@ -54,7 +54,7 @@ function App() {
           currentUser={currentUser}
         />} />
       {currentUser ? (
-        ""
+        <Route path="/" element={<Home currentUser={currentUser} setCurrentUser={setCurrentUser}/>}/>
       ) : (
 
       <Route path="/signup" element={<Signup setCurrentUser={setCurrentUser} />} />
