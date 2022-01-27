@@ -27,7 +27,6 @@ const MapContainer = () => {
         mapRef.current.setZoom(15);
       }, []);
     
-    // const libraries = ["places"];
 
     const onMapClick = React.useCallback((e) => {
         setMarkers((current) => [

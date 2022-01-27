@@ -46,6 +46,9 @@ function Signup({ setCurrentUser }) {
         });
     };
     return (
+        <div className="outer">
+            <div className="inner">
+
         <div className="formContainer">
             {/* <h1>NOT LOGGED IN</h1> */}
             <form onSubmit={handleSubmit} className="form">
@@ -53,6 +56,7 @@ function Signup({ setCurrentUser }) {
                 <label>
                     Full Name:
                     <input
+                        className="form-control"
                         name="full_name"
                         type="text"
                         value={formData.full_name}
@@ -62,6 +66,7 @@ function Signup({ setCurrentUser }) {
                 <label>
                     Email:
                     <input
+                        className="form-control"
                         name="email"
                         type="text"
                         value={formData.email}
@@ -71,6 +76,7 @@ function Signup({ setCurrentUser }) {
                 <label>
                     Username:
                     <input
+                        className="form-control"
                         name="username"
                         type="text"
                         value={formData.username}
@@ -80,14 +86,18 @@ function Signup({ setCurrentUser }) {
                 <label>
                     Password:
                     <input
+                        className="form-control"
                         name="password"
                         type="password"
                         value={formData.password}
                         onChange={(e) => handleChange(e)}
                         required />
                 </label>
-                <input type="submit" value="send" />
+                <input type="submit"  className="btn btn-dark btn-lg btn-block" value="send" />
             </form>
+        </div>
+            </div>
+
         </div>
     );
 }
